@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the make_move method from the GameBoard class, for the Dart programming language.">
+  <title>make_move method - GameBoard class - game_board library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">tictactoe</a></li>
+    <li><a href="../../game_board/game_board-library.html">game_board</a></li>
+    <li><a href="../../game_board/GameBoard-class.html">GameBoard</a></li>
+    <li class="self-crumb">make_move method</li>
+  </ol>
+  <div class="self-name">make_move</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">make_move</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype">void</span>
+<span class="name ">make_move</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="make_move-param-player"><span class="type-annotation"><a href="../../player/Player-class.html">Player</a></span> <span class="parameter-name">player</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void make_move(Player player) {
+  var position = null;
+
+  stdout.write(
+      &quot;${player.name} please enter you move (1-9) that is not taken: &quot;);
+  while (position == null) {
+    try {
+      var input = player.play();
+
+      if (input.runtimeType == String) {
+        position = int.parse(input!);
+        if (position &gt;= 1 &amp;&amp; position &lt;= 9) {
+          if (is_space_empty(position)) {
+            int? row = points[position]?.elementAt(0);
+            int? col = points[position]?.elementAt(1);
+            board[row!][col!] = player.symbol;
+            break;
+          } else {
+            position = null;
+            throw &quot;Position $position  is taken. ${player.name} enter your move (1-9) that is not taken: &quot;;
+          }
+        }
+        position = null;
+        throw &quot;Invalid entry, ${player.name} enter your move (1-9) that is not taken: &quot;;
+      } else {
+        &#47;&#47; Input is null or cannot be parsed as an integer
+        stdout.write(
+            &quot;Invalid Entry --$input. Enter your move (1-9) that is not taken: &quot;);
+      }
+    } catch (error) {
+      stdout.write(
+          &quot;Invalid input. ${player.name} Re-enter your move (1-9) that is not taken: &quot;);
+    }
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">tictactoe</a></li>
+  <li><a href="../../game_board/game_board-library.html">game_board</a></li>
+  <li><a href="../../game_board/GameBoard-class.html">GameBoard</a></li>
+  <li class="self-crumb">make_move method</li>
+</ol>
+
+
+    <h5>GameBoard class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../game_board/GameBoard-class.html#constructors">Constructors</a></li>
+          <li><a href="../../game_board/GameBoard/GameBoard.html">GameBoard</a></li>
+
+
+        <li class="section-title">
+          <a href="../../game_board/GameBoard-class.html#instance-properties">Properties</a>
+        </li>
+          <li><a href="../../game_board/GameBoard/board.html">board</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.6/dart-core/Object/hashCode.html">hashCode</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.6/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+        <li class="section-title"><a href="../../game_board/GameBoard-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../game_board/GameBoard/display_board.html">display_board</a></li>
+          <li><a href="../../game_board/GameBoard/is_board_full.html">is_board_full</a></li>
+          <li><a href="../../game_board/GameBoard/is_space_empty.html">is_space_empty</a></li>
+          <li><a href="../../game_board/GameBoard/is_winner.html">is_winner</a></li>
+          <li><a href="../../game_board/GameBoard/make_move.html">make_move</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.6/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.6/dart-core/Object/toString.html">toString</a></li>
+
+        <li class="section-title inherited"><a href="../../game_board/GameBoard-class.html#operators">Operators</a></li>
+          <li class="inherited"><a href="https://api.dart.dev/stable/2.19.6/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    tictactoe
+      1.0.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
